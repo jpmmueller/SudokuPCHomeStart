@@ -20,8 +20,8 @@ function checkinside(){
   function validateAll(valNum){
     toArr(valNum);
     if (valNum > 0){
-      isValidInRow();
       isValidInCol();
+      isValidInRow();
     }
   }
 
@@ -64,7 +64,6 @@ function checkinside(){
     let c = 0;
     let d = 0;    
     let tempZahlCol = 0;
-    let test;
     colsbefore = ((yP - 1));// xP-1 gibt die Anzahl der Reihen vor der aktuellen Reihe
     startIndexCol = (colsbefore);
     for (tempZahlCol = 1; tempZahlCol <= 9; tempZahlCol++){ // wandert von links (0) nach rechts(8). Das sind insg. 9 Kästchen.
