@@ -9,17 +9,11 @@ function checkinside(){
         firstBlockCol = (blockRow * 3) + 1;
         firstBlockRow = (blockCol * 3) + 1;
         block = (blockRow + (blockCol * 3)) + 1;
-        // console.log("Zeile: " + (xP) ,"Spalte: " + (yP));
-        // console.log("selx: " + selectedX  , "sely: " + selectedY );
-        // console.log(block);
-        // console.log("Erste Blockzeile: " + firstBlockRow , "Erste Blockspalte: " + firstBlockCol);
       }else{
         inside = false;
-        // console.log("ausserhalb rechts oder unten");
       }
       }else{
         inside = false;
-        // console.log("ausserhalb links oder oben");
       }
   }
 
@@ -27,6 +21,7 @@ function checkinside(){
     toArr(valNum);
     if (valNum > 0){
       isValidInRow();
+      isValidInCol();
     }
   }
 
@@ -35,25 +30,20 @@ function checkinside(){
     let d = 0;    
     let colgefunden;
     let indexTemp;
-    let tempZahl = 0;
+    let tempZahlRow = 0;
     let test;
     rowsbefore = ((xP - 1));// xP-1 gibt die Anzahl der Reihen vor der aktuellen Reihe
     startIndex = (rowsbefore * 9);
-    for (tempZahl = 1; tempZahl <= 9; tempZahl++){ // wandert von links (0) nach rechts(8). Das sind insg. 9 Kästchen.
+    for (tempZahlRow = 1; tempZahlRow <= 9; tempZahlRow++){ // wandert von links (0) nach rechts(8). Das sind insg. 9 Kästchen.
       tempArray = [];
-      checkitbaby((tempZahl));
-      console.log("nach checkitbaby und vor weiss rot check")
-      console.log("temparrray inhalt: " + tempArray);
-      console.log("länge des temparry: " + tempArray.length);
+      checkInRow((tempZahlRow));
       if (tempArray.length > 1){
         for (let i = 0; i < tempArray.length; i++){          
-          console.log("in dem pluralcheck")         
           test = tempArray[i];
           numArr[test][3] = false;
         }
       }else if(tempArray.length == 1) {
         for (let j = 0; j < tempArray.length; j++){ 
-          console.log("in dem singelcheck")         
           test = tempArray[j];
           console.log(test)
           numArr[test][3] = true;
@@ -61,24 +51,49 @@ function checkinside(){
     }
   }
 }
-  function checkitbaby(Zahl){
+  function checkInRow(Zahl){
     for (col = 0; col <= 8; col++){
-      // console.log("Start von checkitbaby vor push" )
       if (numArr[(startIndex + col)][2] == Zahl){
-        // console.log("ab hier gehts mit " + Zahl + " los");
         something = (startIndex + col);
         tempArray.push(something);
-        // console.log("es sollte was im temparray sein");
-        // console.log("und zwar: " + tempArray);
-        // console.log("Die Länge des tempArrays: " + tempArray.length);
-        // console.log("checkitbaby mit " + Zahl + " ist fertig");
       }
     }
   } 
 
   function isValidInCol(){
-    let col;
+    let c = 0;
+    let d = 0;    
+    let tempZahlCol = 0;
+    let test;
+    colsbefore = ((yP - 1));// xP-1 gibt die Anzahl der Reihen vor der aktuellen Reihe
+    startIndexCol = (colsbefore);
+    for (tempZahlCol = 1; tempZahlCol <= 9; tempZahlCol++){ // wandert von links (0) nach rechts(8). Das sind insg. 9 Kästchen.
+      tempArray = [];
+      checkInCol((tempZahlCol));
+      if (tempArray.length > 1){
+        for (let i = 0; i < tempArray.length; i++){          
+          test = tempArray[i];
+          numArr[test][3] = false;
+        }
+      }else if(tempArray.length == 1) {
+        for (let j = 0; j < tempArray.length; j++){ 
+          test = tempArray[j];
+          console.log(test)
+          numArr[test][3] = true;
+      }
+    }
   }
+  }
+
+  function checkInCol(Zahl){
+    for (row = 0; row <= 8; row++){
+      if (numArr[(startIndexCol + (row * 9))][2] == Zahl){
+        something = (startIndexCol + (row * 9));
+        tempArray.push(something);
+      }
+    }
+  } 
+
 
   function isValidInBlock(){
 

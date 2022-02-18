@@ -27,8 +27,11 @@ let isnumber = false;
 let rowCorrect;
 
 let rowsbefore;
+let colsbefore;
 let col = 0;
-let startIndex;
+let row = 0;
+let startIndexRow;
+let startIndexCol;
 let numToCheck;
 let tempNum;
 let x = 0;
