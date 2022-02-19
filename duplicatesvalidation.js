@@ -20,8 +20,8 @@ function checkinside(){
   function validateAll(valNum){
     toArr(valNum);
     if (valNum > 0){
-      isValidInCol();
       isValidInRow();
+      isValidInCol();
     }
   }
 
@@ -47,10 +47,10 @@ function checkinside(){
           test = tempArray[j];
           console.log(test)
           numArr[test][3] = true;
+        }
       }
     }
   }
-}
   function checkInRow(Zahl){
     for (col = 0; col <= 8; col++){
       if (numArr[(startIndex + col)][2] == Zahl){
