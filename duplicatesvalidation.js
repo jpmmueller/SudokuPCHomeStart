@@ -21,7 +21,7 @@ function checkinside(){
     toArr(valNum);
     if (valNum > 0){
       isValidInRow();
-      isValidInCol();
+      // isValidInCol();
     }
   }
 
@@ -35,16 +35,16 @@ function checkinside(){
     rowsbefore = ((xP - 1));// xP-1 gibt die Anzahl der Reihen vor der aktuellen Reihe
     startIndex = (rowsbefore * 9);
     for (tempZahlRow = 1; tempZahlRow <= 9; tempZahlRow++){ // wandert von links (0) nach rechts(8). Das sind insg. 9 Kästchen.
-      tempArray = [];
+      tempArrayRow = [];
       checkInRow((tempZahlRow));
-      if (tempArray.length > 1){
-        for (let i = 0; i < tempArray.length; i++){          
-          test = tempArray[i];
+      if (tempArrayRow.length > 1){
+        for (let i = 0; i < tempArrayRow.length; i++){          
+          test = tempArrayRow[i];
           numArr[test][3] = false;
         }
-      }else if(tempArray.length == 1) {
-        for (let j = 0; j < tempArray.length; j++){ 
-          test = tempArray[j];
+      }else if(tempArrayRow.length == 1) {
+        for (let j = 0; j < tempArrayRow.length; j++){ 
+          test = tempArrayRow[j];
           console.log(test)
           numArr[test][3] = true;
         }
@@ -55,7 +55,7 @@ function checkinside(){
     for (col = 0; col <= 8; col++){
       if (numArr[(startIndex + col)][2] == Zahl){
         something = (startIndex + col);
-        tempArray.push(something);
+        tempArrayRow.push((startIndex + col));
       }
     }
   } 
