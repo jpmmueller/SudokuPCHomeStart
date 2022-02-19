@@ -35,7 +35,9 @@ let startIndexCol;
 let numToCheck;
 let tempNum;
 let x = 0;
-let tempArray =[];
+let tempArrayRow =[];
+let tempArrayCol =[];
+let tempArrayBlock =[];
 let something;
 
 
