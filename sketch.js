@@ -26,8 +26,8 @@ let editmode = false;
 let isnumber = false;
 let rowCorrect;
 
-
-
+let tempArrayRow =[];
+let x = [];
 
 function setup() {
   createCanvas(800, 1200);
