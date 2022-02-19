@@ -26,19 +26,7 @@ let editmode = false;
 let isnumber = false;
 let rowCorrect;
 
-let rowsbefore;
-let colsbefore;
-let col = 0;
-let row = 0;
-let startIndexRow;
-let startIndexCol;
-let numToCheck;
-let tempNum;
-let x = 0;
-let tempArrayRow =[];
-let tempArrayCol =[];
-let tempArrayBlock =[];
-let something;
+
 
 
 function setup() {
