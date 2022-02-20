@@ -41,8 +41,6 @@ function isValidInRowColBlock(altZCheck, neuZCheck){
   colsbefore = ((yP - 1));// yP-1 gibt die Anzahl der Spalten vor der aktuellen Spalte
   startIndexCol = (colsbefore);
   startIndexBlock = (((firstBlockCol - 1) + ((firstBlockRow - 1) * 9)));
-  console.log("Der reale Index: " + ((xP - 1) * 9 + (yP - 1)) , "Blocknummer: " + block ,"Mein Index: " + startIndexBlock);
-  console.log("firstblockrow: " + firstBlockRow, "firstblockcol: " + firstBlockCol);
 
   for (ZCheckCounter = 0; ZCheckCounter < 2;ZCheckCounter++){
     if (ZCheckCounter == 0){
@@ -54,6 +52,7 @@ function isValidInRowColBlock(altZCheck, neuZCheck){
     
     tempArrayRow = [];
     tempArrayCol = [];
+    tempArrayBlock = [];
 
     for (stepperColRowBlock = 0; stepperColRowBlock <= 8; stepperColRowBlock++){ // wandert von links (0) nach rechts(8). Das sind insg. 9 Kästchen.
       checkInRow((numToCheck));
@@ -102,5 +101,13 @@ function checkInCol(Zahl){
 }//--- checkInCol() Ende ---
 
 function isValidInBlock(){
-
+  if (stepperColRowBlock % 3 == 0){
+    for (let i = 0; i <= 2; i++){
+      if (numArr[(startIndexBlock + (i * 3) + stepperColRowBlock)][2] == Zahl){//stepperColRowBlock geht von 0-3.
+        //  Das wird jeweils zum Startindex des aktuellen blocks addiert und so wird munter immer 1 nach rechts gewandert.
+        // i wandert im Block Zeilenweise nach unten
+          tempArrayBlock.push((startIndexBlock + blockstep));
+      }
+    }    
+  }
 }//--- isValidInBlock() Ende ---
