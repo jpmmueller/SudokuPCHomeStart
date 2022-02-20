@@ -26,6 +26,9 @@ let editmode = false;
 let isnumber = false;
 let rowCorrect;
 
+let startIndexRow;
+let startIndexCol;
+let startIndexBlock;
 let stepperColRowBlock;
 let tempArrayRow =[];
 let tempArrayRowAltZ =[];
