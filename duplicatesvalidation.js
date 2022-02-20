@@ -24,19 +24,12 @@ function validateAll(valNum){
   let startIndexCol;
   let numToCheck;
   let tempNum;
-  let alteZahl;
-  
-  
-  let tempArrayCol =[];
-  let tempArrayBlock =[];
+  let alteZahl;  
   let something;
 
   alteZahl = numArr[((xP - 1) * 9 + (yP - 1))][2];
-  // console.log("ich bin die alteZahl: " + alteZahl);
-  // console.log("und ich bin die neue Zahl: " + valNum);
   toArr(valNum);
   isValidInRow(alteZahl, valNum);
-  // isValidInCol();
   }
 
 function isValidInRow(altZCheck, neuZCheck){
@@ -67,6 +60,7 @@ function isValidInRow(altZCheck, neuZCheck){
     }// for stepperColRowBlock Ende
     console.log("in Zeile: " + xP + " kommt die Zahl: " + numToCheck + " so oft vor: " + tempArrayRow.length);
     console.log("in Spalte: " + yP + " kommt die Zahl: " + numToCheck + " so oft vor: " + tempArrayCol.length);
+    
     if (tempArrayRow.length > 1 ){
       for (let i = 0; i < tempArrayRow.length; i++){          
         test = tempArrayRow[i];
@@ -100,8 +94,8 @@ function checkInRow(Zahl){
 }// checkInRow() Ende
 
 function checkInCol(Zahl){
-  if (numArr[(startIndexCol + ((stepperColRowBlock + 0) * 9))][2] == Zahl){
-      tempArrayCol.push((startIndexCol + ((stepperColRowBlock + 0) * 9)));
+  if (numArr[(startIndexCol + ((stepperColRowBlock) * 9))][2] == Zahl){
+      tempArrayCol.push((startIndexCol + ((stepperColRowBlock) * 9)));
   }
 }// checkInCol() Ende
 
