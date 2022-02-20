@@ -67,17 +67,30 @@ function isValidInRow(altZCheck, neuZCheck){
     }// for stepperColRowBlock Ende
     console.log("in Zeile: " + xP + " kommt die Zahl: " + numToCheck + " so oft vor: " + tempArrayRow.length);
     console.log("in Spalte: " + yP + " kommt die Zahl: " + numToCheck + " so oft vor: " + tempArrayCol.length);
-    // if (tempArrayRowNeuZ.length == 0 || tempArrayRowNeuZ.length > 1){
-    //   for (let i = 0; i < tempArrayRowNeuZ.length; i++){          
-    //     test = tempArrayRowNeuZ[i];
-    //     numArr[test][3] = false;
-    //   }
-    // }else if(tempArrayRowNeuZ.length == 1) {
-    //   for (let j = 0; j < tempArrayRowNeuZ.length; j++){ 
-    //     test = tempArrayRowNeuZ[j];
-    //     numArr[test][3] = true;
-    //   }
-    // }
+    if (tempArrayRow.length > 1 ){
+      for (let i = 0; i < tempArrayRow.length; i++){          
+        test = tempArrayRow[i];
+        numArr[test][3] = false;
+      }
+    }else if(tempArrayRow.length <= 1 && tempArrayCol.length <= 1){
+      for (let j = 0; j < tempArrayRow.length; j++){ 
+        test = tempArrayRow[j];
+        numArr[test][3] = true;
+      }
+    }
+
+    if ( tempArrayCol.length > 1){
+      for (let i = 0; i < tempArrayCol.length; i++){          
+        test = tempArrayCol[i];
+        numArr[test][3] = false;
+      }
+    }else if(tempArrayCol.length <= 1 && tempArrayRow.length <= 1){
+      for (let j = 0; j < tempArrayCol.length; j++){ 
+        test = tempArrayCol[j];
+        numArr[test][3] = true;
+      }
+    }
+
   }// for ZCheckCounter Ende    
 }// isValidInRow() Ende
 
