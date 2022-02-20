@@ -26,7 +26,11 @@ let editmode = false;
 let isnumber = false;
 let rowCorrect;
 
+let stepperColRowBlock;
 let tempArrayRow =[];
+let tempArrayRowAltZ =[];
+let tempArrayCol =[];
+let tempArrayColAltZ =[];
 let x = [];
 
 function setup() {
@@ -101,12 +105,13 @@ function numberstorect() {
   }
 }
 
-// wird von keypressed() aufgerufen
+// wird von validateAll{} in duplicatesvalidation.js aufgerufen
+// und trägt erstmal die jeweilige Zahl in numArr[] ein.
 function toArr(num){
-  // if (rowCorrect == true){
-    numArr[(((xP -1) * 9) + yP) - 1] =[selectedX,selectedY,num];
-    }
-  // }
+
+  numArr[(((xP -1) * 9) + yP) - 1] =[selectedX,selectedY,num,true];  
+
+}
 
 // wird von draw() aufgerufen
   function toGrid(){

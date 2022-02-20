@@ -17,100 +17,83 @@ function checkinside(){
       }
   }
 
-  function validateAll(valNum){
-    let rowsbefore;
-    let colsbefore;
-    let col = 0;
-    let row = 0;
-    let startIndexRow;
-    let startIndexCol;
-    let numToCheck;
-    let tempNum;
+function validateAll(valNum){
+  let rowsbefore;
+  let colsbefore;
+  let startIndexRow;
+  let startIndexCol;
+  let numToCheck;
+  let tempNum;
+  let alteZahl;
+  
+  
+  let tempArrayCol =[];
+  let tempArrayBlock =[];
+  let something;
+
+  alteZahl = numArr[((xP - 1) * 9 + (yP - 1))][2];
+  // console.log("ich bin die alteZahl: " + alteZahl);
+  // console.log("und ich bin die neue Zahl: " + valNum);
+  toArr(valNum);
+  isValidInRow(alteZahl, valNum);
+  // isValidInCol();
+  }
+
+function isValidInRow(altZCheck, neuZCheck){
+  let c = 0;
+  let d = 0;  
+  let t = [];  
+  let rowStepinCol;
+  let ZCheckCounter;
+  let indexTemp;
+  let test;
+  rowsbefore = ((xP - 1));// xP-1 gibt die Anzahl der Reihen vor der aktuellen Reihe
+  startIndexRow = (rowsbefore * 9);
+  colsbefore = ((yP - 1));// yP-1 gibt die Anzahl der Spalten vor der aktuellen Spalte
+  startIndexCol = (colsbefore);
+  for (ZCheckCounter = 0; ZCheckCounter < 2;ZCheckCounter++){
+    if (ZCheckCounter == 0){
+      numToCheck = altZCheck;
+    }
+    if (ZCheckCounter == 1){ 
+    numToCheck = neuZCheck;
+    } 
     
-    
-    let tempArrayCol =[];
-    let tempArrayBlock =[];
-    let something;
-    toArr(valNum);
-    if (valNum > 0){
-      isValidInRow();
-      if (tempArrayRow.length > 0){
-        console.log(x);
-      }
-      // isValidInCol();
-    }
+    tempArrayRow = [];
+    tempArrayCol = [];
+    for (stepperColRowBlock = 0; stepperColRowBlock <= 8; stepperColRowBlock++){ // wandert von links (0) nach rechts(8). Das sind insg. 9 Kästchen.
+      checkInRow((numToCheck));
+      checkInCol(numToCheck);
+    }// for stepperColRowBlock Ende
+    console.log("in Zeile: " + xP + " kommt die Zahl: " + numToCheck + " so oft vor: " + tempArrayRow.length);
+    console.log("in Spalte: " + yP + " kommt die Zahl: " + numToCheck + " so oft vor: " + tempArrayCol.length);
+    // if (tempArrayRowNeuZ.length == 0 || tempArrayRowNeuZ.length > 1){
+    //   for (let i = 0; i < tempArrayRowNeuZ.length; i++){          
+    //     test = tempArrayRowNeuZ[i];
+    //     numArr[test][3] = false;
+    //   }
+    // }else if(tempArrayRowNeuZ.length == 1) {
+    //   for (let j = 0; j < tempArrayRowNeuZ.length; j++){ 
+    //     test = tempArrayRowNeuZ[j];
+    //     numArr[test][3] = true;
+    //   }
+    // }
+  }// for ZCheckCounter Ende    
+}// isValidInRow() Ende
+
+function checkInRow(Zahl){
+    if (numArr[(startIndexRow + stepperColRowBlock)][2] == Zahl){
+      tempArrayRow.push((startIndexRow + stepperColRowBlock));
   }
+}// checkInRow() Ende
 
-  function isValidInRow(){
-    let c = 0;
-    let d = 0;  
-    let t = [];  
-    let colgefunden;
-    let indexTemp;
-    let tempZahlRow = 0;
-    let test;
-    rowsbefore = ((xP - 1));// xP-1 gibt die Anzahl der Reihen vor der aktuellen Reihe
-    startIndex = (rowsbefore * 9);
-    for (tempZahlRow = 1; tempZahlRow <= 9; tempZahlRow++){ // wandert von links (0) nach rechts(8). Das sind insg. 9 Kästchen.
-      tempArrayRow = [];
-      checkInRow((tempZahlRow));      
-      if (tempArrayRow.length > 1){
-        for (let i = 0; i < tempArrayRow.length; i++){          
-          test = tempArrayRow[i];
-          numArr[test][3] = false;
-           x = tempArrayRow;
-        }
-      }else if(tempArrayRow.length == 1) {
-        for (let j = 0; j < tempArrayRow.length; j++){ 
-          test = tempArrayRow[j];
-          numArr[test][3] = true;
-           x = tempArrayRow;
-        }
-      }
-      // console.log(tempArrayRow.length);
-      return x;      
-    }          
-    
+function checkInCol(Zahl){
+    if (numArr[(startIndexCol + ((stepperColRowBlock + 0) * 9))][2] == Zahl){
+      tempArrayCol.push((startIndexCol + ((stepperColRowBlock + 0) * 9)));
   }
-  function checkInRow(Zahl){
-    for (col = 0; col <= 8; col++){
-      if (numArr[(startIndex + col)][2] == Zahl){
-        tempArrayRow.push((startIndex + col));
-      }
-    }
-  } 
-
-  function isValidInCol(){
-    let tempZahlCol = 0;
-    colsbefore = ((yP - 1));// yP-1 gibt die Anzahl der Spalten vor der aktuellen Spalte
-    startIndexCol = (colsbefore);
-    for (tempZahlCol = 1; tempZahlCol <= 9; tempZahlCol++){ // wandert von links (0) nach rechts(8). Das sind insg. 9 Kästchen.
-      tempArray = [];
-      checkInCol((tempZahlCol));
-      if (tempArrayCol.length > 1){
-        for (let i = 0; i < tempArrayCol.length; i++){          
-          test = tempArrayCol[i];
-          numArr[test][3] = false;
-        }
-      }else if(tempArrayCol.length == 1) {
-        for (let j = 0; j < tempArrayCol.length; j++){ 
-          test = tempArrayCol[j];
-          console.log(test)
-          numArr[test][3] = true;
-      }
-    }
-  }
-  }
-
-  function checkInCol(Zahl){
-    for (row = 0; row <= 8; row++){
-      if (numArr[(startIndexCol + (row * 9))][2] == Zahl){
-        tempArrayCol.push((startIndexCol + (row * 9)));
-      }
-    }
-  } 
+}// checkInCol() Ende
 
 
-  function isValidInBlock(){
+function isValidInBlock(){
 
-  }
+}
