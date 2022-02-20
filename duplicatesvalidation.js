@@ -78,7 +78,6 @@ function isValidInRow(altZCheck, neuZCheck){
         numArr[test][3] = true;
       }
     }
-
     if ( tempArrayCol.length > 1){
       for (let i = 0; i < tempArrayCol.length; i++){          
         test = tempArrayCol[i];
@@ -95,13 +94,13 @@ function isValidInRow(altZCheck, neuZCheck){
 }// isValidInRow() Ende
 
 function checkInRow(Zahl){
-    if (numArr[(startIndexRow + stepperColRowBlock)][2] == Zahl){
+  if (numArr[(startIndexRow + stepperColRowBlock)][2] == Zahl){
       tempArrayRow.push((startIndexRow + stepperColRowBlock));
   }
 }// checkInRow() Ende
 
 function checkInCol(Zahl){
-    if (numArr[(startIndexCol + ((stepperColRowBlock + 0) * 9))][2] == Zahl){
+  if (numArr[(startIndexCol + ((stepperColRowBlock + 0) * 9))][2] == Zahl){
       tempArrayCol.push((startIndexCol + ((stepperColRowBlock + 0) * 9)));
   }
 }// checkInCol() Ende
