@@ -61,36 +61,50 @@ function isValidInRowColBlock(altZCheck, neuZCheck){
     checkInCol(numToCheck);
     checkInBlock(numToCheck);
 
-    console.log("Doppelte " + numToCheck + " In Block: " + block + ": " + tempArrayBlock.length);
-    console.log("in Zeile: " + xP + " kommt die Zahl: " + numToCheck + " so oft vor: " + tempArrayRow.length);
-    console.log("in Spalte: " + yP + " kommt die Zahl: " + numToCheck + " so oft vor: " + tempArrayCol.length);
+    // console.log("Doppelte " + numToCheck + " In Block: " + block + ": " + tempArrayBlock.length);
+    // console.log("in Zeile: " + xP + " kommt die Zahl: " + numToCheck + " so oft vor: " + tempArrayRow.length);
+    // console.log("in Spalte: " + yP + " kommt die Zahl: " + numToCheck + " so oft vor: " + tempArrayCol.length);
     
     if (tempArrayRow.length > 1 ){
-      for (let i = 0; i < tempArrayRow.length; i++){          
-        tempArrayWert = tempArrayRow[i];
+      for (let r = 0; r < tempArrayRow.length; r++){          
+        tempArrayWert = tempArrayRow[r];
         if (numArr[tempArrayWert][2] > 0){
           numArr[tempArrayWert][3] = false;
         }
       }
-    }else if(tempArrayRow.length <= 1 && tempArrayCol.length <= 1){
-      for (let j = 0; j < tempArrayRow.length; j++){ 
-        tempArrayWert = tempArrayRow[j];
+    }else if(tempArrayRow.length <= 1 && tempArrayCol.length <= 1 && tempArrayBlock.length <= 1){
+      for (let r = 0; r < tempArrayRow.length; r++){ 
+        tempArrayWert = tempArrayRow[r];
         numArr[tempArrayWert][3] = true;
       }
     }
     if ( tempArrayCol.length > 1){
-      for (let i = 0; i < tempArrayCol.length; i++){          
-        tempArrayWert = tempArrayCol[i];
+      for (let c = 0; c < tempArrayCol.length; c++){          
+        tempArrayWert = tempArrayCol[c];
         if (numArr[tempArrayWert][2] > 0){
           numArr[tempArrayWert][3] = false;
         }
       }
-    }else if(tempArrayCol.length <= 1 && tempArrayRow.length <= 1){
-      for (let j = 0; j < tempArrayCol.length; j++){ 
-        tempArrayWert = tempArrayCol[j];
+    }else if(tempArrayCol.length <= 1 && tempArrayRow.length <= 1 && tempArrayBlock.length <= 1){
+      for (let c = 0; c < tempArrayCol.length; c++){ 
+        tempArrayWert = tempArrayCol[c];
         numArr[tempArrayWert][3] = true;
       }
     }
+    if ( tempArrayBlock.length > 1){
+      for (let b = 0; b < tempArrayBlock.length; b++){          
+        tempArrayWert = tempArrayBlock[b];
+        if (numArr[tempArrayWert][2] > 0){
+          numArr[tempArrayWert][3] = false;
+        }
+      }
+    }else if(tempArrayBlock.length <= 1 && tempArrayRow.length <= 1 && tempArrayCol.length <= 1){
+      for (let b = 0; b < tempArrayBlock.length; b++){ 
+        tempArrayWert = tempArrayBlock[b];
+        numArr[tempArrayWert][3] = true;
+      }
+    }
+
   }//--- for ZCheckCounter Ende ---
 }//--- isValidInRow() Ende ---
 
@@ -118,7 +132,7 @@ function checkInBlock(Zahl){
       if (numArr[((startIndexBlock + (i * gridpat))  + j)][2] == Zahl){//j geht von 0-3.
         //(i * 9) wird jeweils zum Startindex des aktuellen Blocks addiert und so wird munter 
         //nach jedem j durchlauf immer 1 Zeile nach unten gewandert.
-          tempArrayBlock.push((startIndexBlock + ((startIndexBlock + (i * gridpat))  + j)));
+          tempArrayBlock.push((((startIndexBlock + (i * gridpat))  + j)));
       }
     }// for j Ende
   }// for i Ende   
