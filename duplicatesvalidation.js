@@ -2,7 +2,6 @@ function checkinside(){
   
   gridwidth = (breite * (gridpat -1));
   gridheight = (hoehe * (gridpat - 1));
-  console.log((nullx + gridwidth),(nully + gridheight));
   if (selectedX >= nullx && selectedY >= nully ) {
     if (selectedX <= (nullx + gridwidth) && selectedY <= (nully + gridheight)) {
       inside = true;
