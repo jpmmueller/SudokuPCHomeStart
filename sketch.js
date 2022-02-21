@@ -2,7 +2,7 @@ let numArr = [];
 let xP;
 let yP;
 
-var nullx = 140;
+var nullx = 200;
 var nully = 50;
 let gridpat = 9;
 let gridwidth, gridheight;
