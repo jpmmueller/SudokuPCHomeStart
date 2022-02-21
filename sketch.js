@@ -29,7 +29,6 @@ let rowCorrect;
 let startIndexRow;
 let startIndexCol;
 let startIndexBlock;
-let stepperColRowBlock;
 let tempArrayRow =[];
 let tempArrayRowAltZ =[];
 let tempArrayCol =[];
