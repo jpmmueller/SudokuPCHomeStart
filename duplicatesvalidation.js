@@ -54,11 +54,10 @@ function isValidInRowColBlock(altZCheck, neuZCheck){
     tempArrayCol = [];
     tempArrayBlock = [];
     
-    for (stepperColRowBlock = 0; stepperColRowBlock <= 8; stepperColRowBlock++){ // wandert von links (0) nach rechts(8). Das sind insg. 9 Kästchen.
-      checkInRow(numToCheck);
-      checkInCol(numToCheck);
-    }// for stepperColRowBlock Ende
+    checkInRow(numToCheck);
+    checkInCol(numToCheck);
     checkInBlock(numToCheck);
+
     console.log("Doppelte " + numToCheck + " In Block: " + block + ": " + tempArrayBlock.length);
     console.log("in Zeile: " + xP + " kommt die Zahl: " + numToCheck + " so oft vor: " + tempArrayRow.length);
     console.log("in Spalte: " + yP + " kommt die Zahl: " + numToCheck + " so oft vor: " + tempArrayCol.length);
@@ -66,7 +65,9 @@ function isValidInRowColBlock(altZCheck, neuZCheck){
     if (tempArrayRow.length > 1 ){
       for (let i = 0; i < tempArrayRow.length; i++){          
         test = tempArrayRow[i];
-        numArr[test][3] = false;
+        if (numArr[test][2] > 0){
+          numArr[test][3] = false;
+        }
       }
     }else if(tempArrayRow.length <= 1 && tempArrayCol.length <= 1){
       for (let j = 0; j < tempArrayRow.length; j++){ 
@@ -77,7 +78,9 @@ function isValidInRowColBlock(altZCheck, neuZCheck){
     if ( tempArrayCol.length > 1){
       for (let i = 0; i < tempArrayCol.length; i++){          
         test = tempArrayCol[i];
-        numArr[test][3] = false;
+        if (numArr[test][2] > 0){
+          numArr[test][3] = false;
+        }
       }
     }else if(tempArrayCol.length <= 1 && tempArrayRow.length <= 1){
       for (let j = 0; j < tempArrayCol.length; j++){ 
@@ -89,27 +92,31 @@ function isValidInRowColBlock(altZCheck, neuZCheck){
 }//--- isValidInRow() Ende ---
 
 function checkInRow(Zahl){
-  if (numArr[(startIndexRow + stepperColRowBlock)][2] == Zahl){//stepperColRowBlock geht von 0-8.
-    //  Das wird jeweils zum Startindex der aktuellen Zeile addiert und so wird munter immer 1 nach rechts gewandert.
-      tempArrayRow.push((startIndexRow + stepperColRowBlock));
-  }
+  for (let i = 0; i <= 8; i++){
+    if (numArr[(startIndexRow + i)][2] == Zahl){//i geht von 0-8.
+      //  Das wird jeweils zum Startindex der aktuellen Zeile addiert und so wird munter immer 1 nach rechts gewandert.
+        tempArrayRow.push((startIndexRow + i));
+    }
+  }// for i Ende
 }//--- checkInRow() Ende ---
 
 function checkInCol(Zahl){
-  if (numArr[(startIndexCol + (stepperColRowBlock * 9))][2] == Zahl){//stepperColRowBlock geht von 0-8.
-    // Das jeweils * 9 findet das nächste Kästchen von oben nach unten.
-      tempArrayCol.push((startIndexCol + (stepperColRowBlock * 9)));
-  }
+  for (let i = 0; i <= 8; i++){ 
+    if (numArr[(startIndexCol + (i * 9))][2] == Zahl){//i geht von 0-8.
+      // Das jeweils * 9 findet das nächste Kästchen von oben nach unten.
+        tempArrayCol.push((startIndexCol + (i * 9)));
+    }
+  }// for i Ende
 }//--- checkInCol() Ende ---
 
 function checkInBlock(Zahl){
-    for (let i = 0; i <= 2; i++){// wandert mit (i * 9) Zeilenweise nach unten.
-      for (let j = 0; j <= 2; j++){// wandert Spaltenweise nach rechts.
-        if (numArr[((startIndexBlock + (i * 9))  + j)][2] == Zahl){//j geht von 0-3.
-          //(i * 9) wird jeweils zum Startindex des aktuellen Blocks addiert und so wird munter 
-          //nach jedem j durchlauf immer 1 Zeile nach unten gewandert.
-            tempArrayBlock.push((startIndexBlock + ((startIndexBlock + (i * 9))  + j)));
-        }
+  for (let i = 0; i <= 2; i++){// wandert mit (i * 9) Zeilenweise nach unten.
+    for (let j = 0; j <= 2; j++){// wandert Spaltenweise nach rechts.
+      if (numArr[((startIndexBlock + (i * 9))  + j)][2] == Zahl){//j geht von 0-3.
+        //(i * 9) wird jeweils zum Startindex des aktuellen Blocks addiert und so wird munter 
+        //nach jedem j durchlauf immer 1 Zeile nach unten gewandert.
+          tempArrayBlock.push((startIndexBlock + ((startIndexBlock + (i * 9))  + j)));
       }
-    }    
+    }// for j Ende
+  }// for i Ende   
 }//--- isValidInBlock() Ende ---
