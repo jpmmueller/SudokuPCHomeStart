@@ -100,7 +100,7 @@ function checkInCol(Zahl){
   }
 }//--- checkInCol() Ende ---
 
-function isValidInBlock(){
+function checkInBlock(Zahl){
   if (stepperColRowBlock % 3 == 0){
     for (let i = 0; i <= 2; i++){
       if (numArr[(startIndexBlock + (i * 3) + stepperColRowBlock)][2] == Zahl){//stepperColRowBlock geht von 0-3.
