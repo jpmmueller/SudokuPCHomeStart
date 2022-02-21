@@ -53,9 +53,11 @@ function isValidInRowColBlock(altZCheck, neuZCheck){
     tempArrayRow = [];
     tempArrayCol = [];
     tempArrayBlock = [];
+    checkInBlock(numToCheck);
+    console.log("Doppelte " + numToCheck + " In Block: " + block + ": " + tempArrayBlock.length);
 
     for (stepperColRowBlock = 0; stepperColRowBlock <= 8; stepperColRowBlock++){ // wandert von links (0) nach rechts(8). Das sind insg. 9 Kästchen.
-      checkInRow((numToCheck));
+      checkInRow(numToCheck);
       checkInCol(numToCheck);
     }// for stepperColRowBlock Ende
     // console.log("in Zeile: " + xP + " kommt die Zahl: " + numToCheck + " so oft vor: " + tempArrayRow.length);
@@ -101,13 +103,13 @@ function checkInCol(Zahl){
 }//--- checkInCol() Ende ---
 
 function checkInBlock(Zahl){
-  if (stepperColRowBlock % 3 == 0){
-    for (let i = 0; i <= 2; i++){
-      if (numArr[(startIndexBlock + (i * 3) + stepperColRowBlock)][2] == Zahl){//stepperColRowBlock geht von 0-3.
-        //  Das wird jeweils zum Startindex des aktuellen blocks addiert und so wird munter immer 1 nach rechts gewandert.
-        // i wandert im Block Zeilenweise nach unten
-          tempArrayBlock.push((startIndexBlock + blockstep));
+    for (let i = 0; i <= 2; i++){// wandert mit (i * 9) Zeilenweise nach unten.
+      for (let j = 0; j <= 2; j++){// wandert Spaltenweise nach rechts.
+        if (numArr[((startIndexBlock + (i * 9))  + j)][2] == Zahl){//j geht von 0-3.
+          //(i * 9) wird jeweils zum Startindex des aktuellen Blocks addiert und so wird munter 
+          //nach jedem j durchlauf immer 1 Zeile nach unten gewandert.
+            tempArrayBlock.push((startIndexBlock + ((startIndexBlock + (i * 9))  + j)));
+        }
       }
     }    
-  }
 }//--- isValidInBlock() Ende ---
