@@ -53,15 +53,15 @@ function isValidInRowColBlock(altZCheck, neuZCheck){
     tempArrayRow = [];
     tempArrayCol = [];
     tempArrayBlock = [];
-    checkInBlock(numToCheck);
-    console.log("Doppelte " + numToCheck + " In Block: " + block + ": " + tempArrayBlock.length);
-
+    
     for (stepperColRowBlock = 0; stepperColRowBlock <= 8; stepperColRowBlock++){ // wandert von links (0) nach rechts(8). Das sind insg. 9 Kästchen.
       checkInRow(numToCheck);
       checkInCol(numToCheck);
     }// for stepperColRowBlock Ende
-    // console.log("in Zeile: " + xP + " kommt die Zahl: " + numToCheck + " so oft vor: " + tempArrayRow.length);
-    // console.log("in Spalte: " + yP + " kommt die Zahl: " + numToCheck + " so oft vor: " + tempArrayCol.length);
+    checkInBlock(numToCheck);
+    console.log("Doppelte " + numToCheck + " In Block: " + block + ": " + tempArrayBlock.length);
+    console.log("in Zeile: " + xP + " kommt die Zahl: " + numToCheck + " so oft vor: " + tempArrayRow.length);
+    console.log("in Spalte: " + yP + " kommt die Zahl: " + numToCheck + " so oft vor: " + tempArrayCol.length);
     
     if (tempArrayRow.length > 1 ){
       for (let i = 0; i < tempArrayRow.length; i++){          
