@@ -24,10 +24,9 @@ function validateAll(valNum){
 function isValidInRowColBlock(altZCheck, neuZCheck){
   let rowsbefore;
   let colsbefore;
-  let blocksbefore;
   let numToCheck;  
   let ZCheckCounter;
-  let test;
+  let tempArrayWert;
 
   blockCol = floor((xP - 1) / 3);
   blockRow = floor((yP - 1) / 3);
@@ -64,28 +63,28 @@ function isValidInRowColBlock(altZCheck, neuZCheck){
     
     if (tempArrayRow.length > 1 ){
       for (let i = 0; i < tempArrayRow.length; i++){          
-        test = tempArrayRow[i];
-        if (numArr[test][2] > 0){
-          numArr[test][3] = false;
+        tempArrayWert = tempArrayRow[i];
+        if (numArr[tempArrayWert][2] > 0){
+          numArr[tempArrayWert][3] = false;
         }
       }
     }else if(tempArrayRow.length <= 1 && tempArrayCol.length <= 1){
       for (let j = 0; j < tempArrayRow.length; j++){ 
-        test = tempArrayRow[j];
-        numArr[test][3] = true;
+        tempArrayWert = tempArrayRow[j];
+        numArr[tempArrayWert][3] = true;
       }
     }
     if ( tempArrayCol.length > 1){
       for (let i = 0; i < tempArrayCol.length; i++){          
-        test = tempArrayCol[i];
-        if (numArr[test][2] > 0){
-          numArr[test][3] = false;
+        tempArrayWert = tempArrayCol[i];
+        if (numArr[tempArrayWert][2] > 0){
+          numArr[tempArrayWert][3] = false;
         }
       }
     }else if(tempArrayCol.length <= 1 && tempArrayRow.length <= 1){
       for (let j = 0; j < tempArrayCol.length; j++){ 
-        test = tempArrayCol[j];
-        numArr[test][3] = true;
+        tempArrayWert = tempArrayCol[j];
+        numArr[tempArrayWert][3] = true;
       }
     }
   }//--- for ZCheckCounter Ende ---
