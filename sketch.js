@@ -5,6 +5,7 @@ let yP;
 var nullx = 140;
 var nully = 50;
 let gridpat = 9;
+let gridwidth, gridheight;
 
 var breite = 65;
 var hoehe = 65;
@@ -77,13 +78,13 @@ function sqMark(){
 
 // Wenn ein neues Quadrat gezeichnet wird, wird mit sqNum eine vorhandene Zahl aus numArr geholt und weiss gemacht
 function sqNum(){  
-  if (numArr[(((xP -1) * gridpat) + yP) - 1][2] > 0 && numArr[(((xP -1) * gridpat) + yP) - 1][2] <= gridpat){
+  if (numArr[(((xP -1) * 9) + yP) - 1][2] > 0 && numArr[(((xP -1) * 9) + yP) - 1][2] <= 9){
     let numToEdit;
-    numToSq = numArr[(((xP -1) * gridpat) + yP) - 1][2];
+    numToSq = numArr[(((xP -1) * 9) + yP) - 1][2];
     editmode = true;
     // isValidInRow(numToSq);
     textAlign(CENTER, CENTER);
-    if (numArr[(((xP -1) * gridpat) + yP) - 1][3] == false){
+    if (numArr[(((xP -1) * 9) + yP) - 1][3] == false){
       fill(255,0,0);                
     } else {        
       fill(255);        
@@ -118,7 +119,7 @@ function toArr(num){
 
 // wird von draw() aufgerufen
   function toGrid(){
-    for (let i = 0; i <= 80; i++){
+    for (let i = 0; i <= (gridpat * gridpat) - 1; i++){
       if (numArr[i][2] > 0){
           textAlign(CENTER, CENTER);
           if (numArr[i][3] == false){

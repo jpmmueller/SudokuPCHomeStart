@@ -1,20 +1,18 @@
 function checkinside(){
-  let gridwidth, gridheight;
-  gridwidth = (breite * (gridpat - 1));
-  gridheight = (breite * (gridpat - 1));
+  
+  gridwidth = (breite * (gridpat -1));
+  gridheight = (hoehe * (gridpat - 1));
+  console.log((nullx + gridwidth),(nully + gridheight));
   if (selectedX >= nullx && selectedY >= nully ) {
-    if (selectedX <= (nullx + gridwidth) && selectedY <= (nully + gridheight) ) {
-      console.log("drin");
+    if (selectedX <= (nullx + gridwidth) && selectedY <= (nully + gridheight)) {
       inside = true;
       xP = (((selectedY - nully) / hoehe) + 1);
       yP = (((selectedX - nullx) / breite) + 1);
     }else{
       inside = false;
-      console.log("draussen");
     }
   }else{
     inside = false;
-    console.log("draussen");
   }
 }
 

@@ -28,40 +28,40 @@ function keyPressed(){
   if (inside == true){
     switch (key){        
       case "Enter":
-        if (selectedY + 65 < 571){
-          selectedY = selectedY + 65;
-        }else if (selectedX + 65 < 661){
-          selectedX = selectedX + 65;
+        if (selectedY + hoehe <= (nully + gridheight)){
+          selectedY = selectedY + hoehe;
+        }else if (selectedX + breite <= (nullx + gridwidth)){
+          selectedX = selectedX + breite;
         }else{
-          selectedX = 140;
+          selectedX = nullx;
         }
         break;
         case "ArrowUp":
-        if (selectedY - 65 > 49){
-          selectedY = selectedY - 65;
+        if (selectedY - hoehe >= nully){
+          selectedY = selectedY - hoehe;
         }else{
-          selectedY = 570;
+          selectedY = (nully + gridheight);
         }
         break;
         case "ArrowDown":
-          if (selectedY + 65 < 571){
-            selectedY = selectedY + 65;
+          if (selectedY + hoehe <= (nully + gridheight)){
+            selectedY = selectedY + hoehe;
           }else{
-            selectedY = 50;
+            selectedY = nully;
           }
           break;
         case "ArrowRight":
-          if (selectedX + 65 < 661){
-            selectedX = selectedX + 65;
+          if (selectedX + breite <= (nullx + gridwidth)){
+            selectedX = selectedX + breite;
           }else{
-            selectedX = 140;
+            selectedX = nullx;
           }
           break;
         case "ArrowLeft":
-          if (selectedX - 65 > 139){
-            selectedX = selectedX - 65;
+          if (selectedX - breite >= nullx){
+            selectedX = selectedX - breite;
           }else{
-            selectedX = 660;
+            selectedX = (nullx + gridwidth);
           }
           break;
       }
