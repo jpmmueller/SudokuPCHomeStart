@@ -64,7 +64,7 @@ function isValidInRowColBlock(altZCheck, neuZCheck){
     // console.log("in Zeile: " + xP + " kommt die Zahl: " + numToCheck + " so oft vor: " + tempArrayRow.length);
     // console.log("in Spalte: " + yP + " kommt die Zahl: " + numToCheck + " so oft vor: " + tempArrayCol.length);
     
-    if (tempArrayRow.length > 1 ){
+    if (tempArrayRow.length > 1 ){// Wenn es in der Zeile Doppelte gibt
       for (let r = 0; r < tempArrayRow.length; r++){          
         tempArrayWert = tempArrayRow[r];
         if (numArr[tempArrayWert][2] > 0){
