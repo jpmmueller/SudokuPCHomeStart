@@ -118,18 +118,18 @@ function toArr(num){
 }
 
 // wird von draw() aufgerufen
-  function toGrid(){
-    for (let i = 0; i <= (gridpat * gridpat) - 1; i++){
-      if (numArr[i][2] > 0){
-          textAlign(CENTER, CENTER);
-          if (numArr[i][3] == false){
-            fill(255,0,0);
-          }else{
-            fill(0);
-          }
-          textSize(breite / 1.3);
-          text(numArr[i][2], numArr[i][0] + breite / 2, numArr[i][1] + hoehe  / 2);
-          //console.log(numArr[i][2], numArr[i][0], numArr[i][1]);
-      }
+function toGrid(){
+  for (let i = 0; i <= (gridpat * gridpat) - 1; i++){
+    if (numArr[i][2] > 0){
+        textAlign(CENTER, CENTER);
+        if (numArr[i][3] == false){
+          fill(255,0,0);
+        }else{
+          fill(0);
+        }
+        textSize(breite / 1.3);
+        text(numArr[i][2], numArr[i][0] + breite / 2, numArr[i][1] + hoehe  / 2);
+        //console.log(numArr[i][2], numArr[i][0], numArr[i][1]);
     }
+  }
 }
